@@ -1,12 +1,14 @@
 let hours = document.querySelector(".hour");
 let minutes = document.querySelector(".minute");
 let seconds = document.querySelector(".second");
+let dayOrNight = document.querySelector(".dayOrNight");
 
 class Clock {
-  constructor(hour_time, minute_time, second_time) {
+  constructor(hour_time, minute_time, second_time, day_night) {
     this.hour_time = hour_time;
     this.minute_time = minute_time;
     this.second_time = second_time;
+    this.day_night = day_night;
   }
 
   hours() {
@@ -44,15 +46,25 @@ class Clock {
     }
   }
 
+  dayOrNight() {
+    let getHours = this.date.getHours();
+    if (getHours > 12) {
+      this.day_night.textContent = "PM";
+    } else {
+      this.day_night.textContent = "AM";
+    }
+  }
+
   showTime() {
     setInterval(() => {
       this.date = new Date();
       this.hours();
       this.minutes();
       this.seconds();
+      this.dayOrNight();
     }, 1000);
   }
 }
 
-let alaramClock = new Clock(hours, minutes, seconds);
+let alaramClock = new Clock(hours, minutes, seconds, dayOrNight);
 alaramClock.showTime();

@@ -1,45 +1,85 @@
-body {
-  margin-top: 10%;
+.container {
+  margin: 0 auto;
+  width: 100%;
 }
+
 .clock-body {
-  margin: 0px auto;
-  height: 300px;
-  width: 50%;
-  border-radius: 3px;
-  background-color: #333;
+  margin: 20px auto 5px;
+  width: 60%;
+  /* padding: 5%; */
   text-align: center;
+  border: 5px solid black;
+  border-radius: 3px;
+  background-color: #555;
+}
+
+.holder {
+  display: inline-block;
+  /* margin: 2px 2px; */
+  width: 100%;
 }
 
 .time-display {
-  display: inline-block;
-  margin: 20px auto;
-  width: 95%;
-  height: 87%;
-  border-radius: 3px;
-  background-color: #ccc;
-  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #555;
 }
 
 .hour,
 .minute,
 .second {
-  display: inline-block;
-  padding: 12% 6%;
-  width: 20%;
-  height: 100%;
-  margin: 0% auto;
-  border-radius: 1%;
-  color: yellowgreen;
-  font-size: 500%;
-  background-color: black;
-  text-align: center;
+  flex-grow: 1;
+  padding: 2%;
+  font-size: 350%;
+  color: chartreuse;
+  border-radius: 3px;
+  background-color: #555;
 }
 
-@media screen and (max-width: 750px) {
-  .hour,
-  .minute,
-  .second {
-    padding: 30% 6%;
-    font-size: 350%;
-  }
+.dayOrNight {
+  flex-grow: 0.05;
+  padding: 5%;
+  font-size: 100%;
+  color: chartreuse;
+  background-color: #555;
+}
+
+.buttons {
+  margin: 0px auto;
+  width: 60%;
+  padding: 5px 0px;
+  text-align: center;
+  border: 5px solid black;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.set-alarm,
+.stop-clock {
+  padding: 0px 1%;
+  float: right;
+  transition: all 0.2s;
+}
+
+.set-alarm:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.stop-clock:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+svg {
+  float: left;
+}
+
+.time:hover {
+  cursor: pointer;
+}
+
+.date:hover {
+  cursor: pointer;
 }

@@ -6,25 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Clock</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="yourIcon.png" type="image/png">
 </head>
 
 <body>
     <div class='container'>
         <div class='clock-body'>
-            <div class='time-display'>
-                <div class='hour'>
+            <div class='holder'>
+                <div class='time-display'>
+                    <div class='hour'>
 
-                </div>
-                <div class='minute'>
+                    </div>
+                    <div class='minute'>
 
-                </div>
-                <div class='second'>
+                    </div>
+                    <div class='second'>
 
+                    </div>
+                    <div class='dayOrNight'>
+
+                    </div>
                 </div>
             </div>
         </div>
+        <div class='buttons'>
+            <svg class='time' height='25' width="20">
+                <circle r='7' cx="10" cy="13" fill='chartreuse' stroke='black'></circle>
+            </svg>
+            <svg class='date' height='20' width="20">
+                <circle r='7' cx="10" cy="13" fill='crimson' stroke='black'></circle>
+            </svg>
+            <img class='set-alarm' src="https://img.icons8.com/pastel-glyph/64/000000/alarm-clock--v3.png" width='28'
+                height='28' />
+            <img class='stop-clock' src="https://img.icons8.com/android/24/000000/stopwatch.png" width='25'
+                height='25' />
+        </div>
     </div>
-    <script src='app.js'>
+    <script src=' app.js'>
 
     </script>
 </body>
