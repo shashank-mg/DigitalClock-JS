@@ -1,20 +1,23 @@
 .container {
   margin: 0 auto;
-  width: 100%;
+  min-width: 995px;
+  height: 500px;
 }
 
 .clock-body {
-  margin: 20px auto 5px;
+  margin: 20px auto 0px;
   width: 60%;
   text-align: center;
   border: 5px solid black;
   border-radius: 3px;
   background-color: #555;
+  height: 40%;
 }
 
 .holder {
   display: inline-block;
   width: 100%;
+  height: 100%;
 }
 
 .time-display {
@@ -23,6 +26,8 @@
   flex-wrap: wrap;
   flex-basis: 200px;
   background-color: #555;
+  height: 100%;
+  align-items: center;
 }
 
 .hour,
@@ -90,4 +95,103 @@
 .date:hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+.month {
+  flex-grow: 1;
+  padding: 2%;
+  font-size: 320%;
+  color: chartreuse;
+  border-radius: 3px;
+  background-color: #555;
+}
+
+.year {
+  flex-grow: 1;
+  padding: 2%;
+  font-size: 320%;
+  color: chartreuse;
+  border-radius: 3px;
+  background-color: #555;
+  height: 60px;
+}
+
+.alarm-set {
+  border-bottom: 1px solid chartreuse;
+}
+
+/* for on / off */
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: chartreuse;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px chartreuse;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.hour2,
+.minute2,
+.second2,
+.dayOrNight2 {
+  flex-grow: 1;
+  padding: 2%;
+  font-size: 100%;
+  color: chartreuse;
+  background-color: #555;
 }
