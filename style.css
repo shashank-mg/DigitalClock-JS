@@ -6,7 +6,6 @@
 .clock-body {
   margin: 20px auto 5px;
   width: 60%;
-  /* padding: 5%; */
   text-align: center;
   border: 5px solid black;
   border-radius: 3px;
@@ -15,7 +14,6 @@
 
 .holder {
   display: inline-block;
-  /* margin: 2px 2px; */
   width: 100%;
 }
 
@@ -23,6 +21,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  flex-basis: 200px;
   background-color: #555;
 }
 
@@ -53,13 +52,16 @@
   border: 5px solid black;
   border-radius: 3px;
   overflow: hidden;
+  display: flex;
+  flex-basis: 200px;
+  flex-wrap: wrap;
+  flex-basis: 200px;
 }
 
-.set-alarm,
-.stop-clock {
-  padding: 0px 1%;
-  float: right;
-  transition: all 0.2s;
+.buttons > div {
+  flex-grow: 1;
+  height: 0%;
+  margin-top: 7px;
 }
 
 .set-alarm:hover {
@@ -72,14 +74,20 @@
   cursor: pointer;
 }
 
-svg {
-  float: left;
+.time,
+.date,
+.set-alarm,
+.stop-clock {
+  /* padding: 0% 1%; */
+  transition: all 0.2s;
 }
 
 .time:hover {
   cursor: pointer;
+  transform: scale(1.2);
 }
 
 .date:hover {
   cursor: pointer;
+  transform: scale(1.2);
 }
