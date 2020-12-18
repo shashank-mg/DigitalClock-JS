@@ -6,7 +6,6 @@ let dayOrNight = document.querySelector(".dayOrNight");
 let time = document.querySelector(".time");
 let date = document.querySelector(".date");
 let alarm = document.querySelector(".set-alarm");
-
 let flag = 0;
 
 let months = [

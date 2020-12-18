@@ -74,36 +74,17 @@ class Clock {
   }
 
   showTime() {
-    this.day_night.classList.remove("dayOrNight2");
-    this.minute_time.classList.remove("minute2");
-    this.second_time.classList.remove("second2");
-    this.hour_time.classList.remove("hour2");
-    this.time_display.appendChild(this.on_off);
-    this.time_display.removeChild(this.on_off);
+    this.commonInTimeDate();
     flag = 0;
-    this.date = new Date();
-    this.hours();
-    this.minutes();
-    this.seconds();
-    this.dayOrNight();
+    this.callForTime();
     this.stopTime = setInterval(() => {
-      this.date = new Date();
-      this.hours();
-      this.minutes();
-      this.seconds();
-      this.dayOrNight();
+      this.callForTime();
     }, 1000);
   }
 
   // Show Date
   displayDate() {
-    this.time_display.appendChild(this.on_off);
-    this.time_display.removeChild(this.on_off);
-
-    this.day_night.classList.remove("dayOrNight2");
-    this.minute_time.classList.remove("minute2");
-    this.second_time.classList.remove("second2");
-    this.hour_time.classList.remove("hour2");
+    this.commonInTimeDate();
     flag = 1;
 
     clearInterval(this.stopTime);
@@ -197,10 +178,7 @@ class Clock {
     onOff_val.addEventListener("click", () => {
       if (onOff_val.value === "on") {
         onOff_val.value = "off";
-        this.alarmIsSet = false;
-        this.isSet = "off";
-        this.stopTheSound();
-        clearInterval(this.animClock);
+        turnOnOff();
       } else {
         onOff_val.value = "on";
         this.alarmIsSet = true;
@@ -208,9 +186,7 @@ class Clock {
       }
       if (onOff_val.disabled) {
         onOff_val.value = "off";
-        this.isSet = "off";
-        this.stopTheSound();
-        clearInterval(this.animClock);
+        turnOnOff();
       }
       this.changeAlarmIcon(this.alarmIsSet);
     });
@@ -274,6 +250,29 @@ class Clock {
 
       this.ringAlarm(h, m, s, nightOrDay);
     }, 1000);
+  }
+
+  commonInTimeDate() {
+    this.time_display.appendChild(this.on_off);
+    this.time_display.removeChild(this.on_off);
+    this.day_night.classList.remove("dayOrNight2");
+    this.minute_time.classList.remove("minute2");
+    this.second_time.classList.remove("second2");
+    this.hour_time.classList.remove("hour2");
+  }
+
+  callForTime() {
+    this.date = new Date();
+    this.hours();
+    this.minutes();
+    this.seconds();
+    this.dayOrNight();
+  }
+  turnOnOff() {
+    this.alarmIsSet = false;
+    this.isSet = "off";
+    this.stopTheSound();
+    clearInterval(this.animClock);
   }
 }
 
