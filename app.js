@@ -20,8 +20,6 @@ class Clock {
     this.isSet = "off";
     this.alarmIsSet = false;
     this.on_off = document.createElement("div");
-
-    //call for alarm
   }
 
   // Showing Time
@@ -30,15 +28,15 @@ class Clock {
     if (getHours > 12) {
       getHours = getHours - 12;
       if (getHours < 10) {
-        this.hour_time.textContent = "0" + getHours;
+        this.hour_time.textContent = "0" + getHours + "  :";
       } else {
-        this.hour_time.textContent = getHours;
+        this.hour_time.textContent = getHours + "  :";
       }
     } else {
       if (getHours < 10) {
-        this.hour_time.textContent = "0" + getHours;
+        this.hour_time.textContent = "0" + getHours + "  :";
       } else {
-        this.hour_time.textContent = getHours;
+        this.hour_time.textContent = getHours + "  :";
       }
     }
     return getHours;
@@ -48,9 +46,9 @@ class Clock {
     this.minute_time.classList.remove("month");
     let getMinutes = this.date.getMinutes();
     if (getMinutes <= 9) {
-      this.minute_time.textContent = "0" + getMinutes;
+      this.minute_time.textContent = "0" + getMinutes + "  :";
     } else {
-      this.minute_time.textContent = getMinutes;
+      this.minute_time.textContent = getMinutes + "  :";
     }
     return getMinutes;
   }
@@ -219,11 +217,12 @@ class Clock {
   }
 
   changeAlarmIcon(isSet = false) {
-    if (isSet)
+    if (isSet) {
       alarm.src = "https://img.icons8.com/ios-glyphs/30/000000/alarm-on.png";
-    else
+    } else {
       alarm.src =
         "https://img.icons8.com/pastel-glyph/64/000000/alarm-clock--v3.png";
+    }
   }
 
   playTheSound = () => {
@@ -244,8 +243,8 @@ class Clock {
   ringAlarm(h, m, s, dn) {
     if (this.isSet === "on") {
       if (
-        +this.hour_alarm_time === h &&
-        +this.minute_alarm_time === m &&
+        parseInt(this.hour_alarm_time) === h &&
+        parseInt(this.minute_alarm_time) === m &&
         +this.second_alarm_time === s &&
         this.amPm_alarm_time === dn
       ) {
@@ -259,13 +258,21 @@ class Clock {
     setInterval(() => {
       this.date = new Date();
       let getHours = this.date.getHours();
-      if (getHours > 12) getHours = getHours - 12;
+      let nightOrDay;
+      if (getHours >= 12) {
+        nightOrDay = "PM";
+      } else {
+        nightOrDay = "AM";
+      }
+      if (getHours > 12) {
+        getHours = getHours - 12;
+      }
 
       let h = getHours;
       let m = this.date.getMinutes();
       let s = this.date.getSeconds();
-      // dn = this.dayOrNight();
-      this.ringAlarm(h, m, s, "PM");
+
+      this.ringAlarm(h, m, s, nightOrDay);
     }, 1000);
   }
 }
