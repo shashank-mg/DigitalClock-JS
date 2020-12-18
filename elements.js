@@ -1,3 +1,14 @@
+let timeDisplay = document.querySelector(".time-display");
+let hours = document.querySelector(".hour");
+let minutes = document.querySelector(".minute");
+let seconds = document.querySelector(".second");
+let dayOrNight = document.querySelector(".dayOrNight");
+let time = document.querySelector(".time");
+let date = document.querySelector(".date");
+let alarm = document.querySelector(".set-alarm");
+
+let flag = 0;
+
 let months = [
   "January",
   "February",
@@ -30,17 +41,17 @@ let choose_hour = `
       Hours
       </label>
     </div>
-    <select class="custom-select" id="inputGroupSelect01">
-      <option selected>--:--</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
+    <select class="custom-select-hour" id="inputGroupSelect01">
+      <option selected value='00'>00</option>
+      <option value="01">01</option>
+      <option value="02">02</option>
+      <option value="03">03</option>
+      <option value="04">04</option>
+      <option value="05">05</option>
+      <option value="06">06</option>
+      <option value="07">07</option>
+      <option value="08">08</option>
+      <option value="09">09</option>
       <option value="10">10</option>
       <option value="11">11</option>
       <option value="12">12</option>
@@ -53,17 +64,17 @@ let choose_minute = `<div class="input-group mb-3">
       Minute
       </label>
     </div>
-    <select class="custom-select" id="inputGroupSelect01">
-      <option selected>--:--</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
+    <select class="custom-select-minute" id="inputGroupSelect01">
+      <option value="00" selected>00</option>
+      <option value="01">01</option>
+      <option value="02">02</option>
+      <option value="03">03</option>
+      <option value="04">04</option>
+      <option value="05">05</option>
+      <option value="06">06</option>
+      <option value="07">07</option>
+      <option value="08">08</option>
+      <option value="09">09</option>
       <option value="10">10</option>
       <option value="11">11</option>
       <option value="12">12</option>
@@ -124,17 +135,17 @@ let choose_second = `
       Second
       </label>
     </div>
-    <select class="custom-select" id="inputGroupSelect01">
-      <option selected>--:--</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
+    <select class="custom-select-second" id="inputGroupSelect01">
+      <option value="00" selected>00</option>
+      <option value="01">01</option>
+      <option value="02">02</option>
+      <option value="03">03</option>
+      <option value="04">04</option>
+      <option value="05">05</option>
+      <option value="06">06</option>
+      <option value="07">07</option>
+      <option value="08">08</option>
+      <option value="09">09</option>
       <option value="10">10</option>
       <option value="11">11</option>
       <option value="12">12</option>
@@ -189,11 +200,8 @@ let choose_second = `
     </div>`;
 
 let onOrOff = `
-    <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-    </label>
-    `;
+  <input class='btn' type="button" name="" value="off">
+`;
 
 let amOrPm = `<div class="input-group mb-3">
       <div class="input-group-append">
@@ -201,9 +209,8 @@ let amOrPm = `<div class="input-group mb-3">
       AM/PM
       </label>
     </div>
-    <select class="custom-select" id="inputGroupSelect01">
-      <option selected>--:--</option>
-      <option value="AM">AM</option>
+    <select class="custom-select-ap" id="inputGroupSelect01">
+      <option value="AM" selected>AM</option>
       <option value="PM">PM</option>
     </select>
     </div>`;

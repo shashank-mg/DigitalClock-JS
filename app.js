@@ -1,13 +1,8 @@
-let onOroff = document.createElement("div");
-let timeDisplay = document.querySelector(".time-display");
-let hours = document.querySelector(".hour");
-let minutes = document.querySelector(".minute");
-let seconds = document.querySelector(".second");
-let dayOrNight = document.querySelector(".dayOrNight");
-let time = document.querySelector(".time");
-let date = document.querySelector(".date");
-let alarm = document.querySelector(".set-alarm");
-let flag = 0;
+// Sounds - howler;
+var ringing = new Howl({
+  src: ["alarm.mp3"],
+  loop: true,
+});
 
 class Clock {
   constructor(hour_time, minute_time, second_time, day_night) {
@@ -16,25 +11,37 @@ class Clock {
     this.second_time = second_time;
     this.day_night = day_night;
     this.time_display = timeDisplay;
-    this.on_off = onOroff;
+
+    this.amPm_alarm_time = "AM";
+    this.second_alarm_time = "00";
+    this.minute_alarm_time = "00";
+    this.hour_alarm_time = "00";
+    this.isDisabled = true;
+    this.isSet = "off";
+    this.alarmIsSet = false;
+    this.on_off = document.createElement("div");
+
+    //call for alarm
   }
 
   // Showing Time
   hours() {
     let getHours = this.date.getHours();
     if (getHours > 12) {
-      if (getHours.length < 2) {
+      getHours = getHours - 12;
+      if (getHours < 10) {
         this.hour_time.textContent = "0" + getHours;
       } else {
-        this.hour_time.textContent = getHours - 12;
+        this.hour_time.textContent = getHours;
       }
     } else {
-      if (getHours.length < 2) {
+      if (getHours < 10) {
         this.hour_time.textContent = "0" + getHours;
       } else {
         this.hour_time.textContent = getHours;
       }
     }
+    return getHours;
   }
 
   minutes() {
@@ -45,6 +52,7 @@ class Clock {
     } else {
       this.minute_time.textContent = getMinutes;
     }
+    return getMinutes;
   }
 
   seconds() {
@@ -54,16 +62,17 @@ class Clock {
     } else {
       this.second_time.textContent = getSeconds;
     }
+    return getSeconds;
   }
 
   dayOrNight() {
-    // this.day_night.classList.remove("dayOrNight2");
     let getHours = this.date.getHours();
     if (getHours >= 12) {
       this.day_night.textContent = "PM";
     } else {
       this.day_night.textContent = "AM";
     }
+    return this.day_night.textContent;
   }
 
   showTime() {
@@ -71,14 +80,14 @@ class Clock {
     this.minute_time.classList.remove("minute2");
     this.second_time.classList.remove("second2");
     this.hour_time.classList.remove("hour2");
-
+    this.time_display.appendChild(this.on_off);
+    this.time_display.removeChild(this.on_off);
     flag = 0;
     this.date = new Date();
     this.hours();
     this.minutes();
     this.seconds();
     this.dayOrNight();
-
     this.stopTime = setInterval(() => {
       this.date = new Date();
       this.hours();
@@ -90,6 +99,9 @@ class Clock {
 
   // Show Date
   displayDate() {
+    this.time_display.appendChild(this.on_off);
+    this.time_display.removeChild(this.on_off);
+
     this.day_night.classList.remove("dayOrNight2");
     this.minute_time.classList.remove("minute2");
     this.second_time.classList.remove("second2");
@@ -125,17 +137,147 @@ class Clock {
     this.day_night.innerHTML = amOrPm;
     this.on_off.innerHTML = onOrOff;
 
-    this.on_off.style.marginRight = "10px";
+    let hour_val = document.querySelector(".custom-select-hour");
+    let minu_val = document.querySelector(".custom-select-minute");
+    let second_val = document.querySelector(".custom-select-second");
+    let amPm_val = document.querySelector(".custom-select-ap");
+    let onOff_val = document.querySelector("input[type='button']");
+
+    hour_val.value = this.hour_alarm_time;
+    minu_val.value = this.minute_alarm_time;
+    second_val.value = this.second_alarm_time;
+    amPm_val.value = this.amPm_alarm_time;
+    onOff_val.disabled = this.isDisabled;
+    onOff_val.value = this.isSet;
+
+    onOff_val.style.marginBottom = "18px";
+    onOff_val.style.marginLeft = "5px";
+    onOff_val.style.marginRight = "5px";
+
+    if (this.hour_alarm_time > 0) {
+      onOff_val.disabled = false;
+    } else {
+      onOff_val.disabled = true;
+    }
+
+    this.changeAlarmIcon(this.alarmIsSet);
+    hour_val.addEventListener("change", () => {
+      this.hour_alarm_time = hour_val.value;
+      if (this.hour_alarm_time > 0) {
+        onOff_val.disabled = false;
+        onOff_val.value = "on";
+        this.alarmIsSet = true;
+        this.isSet = "on";
+      } else {
+        onOff_val.disabled = true;
+        this.alarmIsSet = false;
+        this.isSet = "off";
+        this.stopTheSound();
+        clearInterval(this.animClock);
+      }
+      if (onOff_val.disabled) {
+        onOff_val.value = "off";
+        this.stopTheSound();
+        clearInterval(this.animClock);
+      }
+      this.changeAlarmIcon(this.alarmIsSet);
+    });
+
+    minu_val.addEventListener(
+      "change",
+      () => (this.minute_alarm_time = minu_val.value)
+    );
+    second_val.addEventListener(
+      "change",
+      () => (this.second_alarm_time = second_val.value)
+    );
+    amPm_val.addEventListener(
+      "change",
+      () => (this.amPm_alarm_time = amPm_val.value)
+    );
+
+    onOff_val.addEventListener("click", () => {
+      if (onOff_val.value === "on") {
+        onOff_val.value = "off";
+        this.alarmIsSet = false;
+        this.isSet = "off";
+        this.stopTheSound();
+        clearInterval(this.animClock);
+      } else {
+        onOff_val.value = "on";
+        this.alarmIsSet = true;
+        this.isSet = "on";
+      }
+      if (onOff_val.disabled) {
+        onOff_val.value = "off";
+        this.isSet = "off";
+        this.stopTheSound();
+        clearInterval(this.animClock);
+      }
+      this.changeAlarmIcon(this.alarmIsSet);
+    });
+  }
+
+  changeAlarmIcon(isSet = false) {
+    if (isSet)
+      alarm.src = "https://img.icons8.com/ios-glyphs/30/000000/alarm-on.png";
+    else
+      alarm.src =
+        "https://img.icons8.com/pastel-glyph/64/000000/alarm-clock--v3.png";
+  }
+
+  playTheSound = () => {
+    ringing.play();
+  };
+
+  stopTheSound = () => {
+    ringing.stop();
+  };
+
+  animatedClock() {
+    this.animClock = setInterval(() => {
+      alarm.classList.add("shrinker");
+      alarm.classList.toggle("expand");
+    }, 200);
+  }
+
+  ringAlarm(h, m, s, dn) {
+    if (this.isSet === "on") {
+      if (
+        +this.hour_alarm_time === h &&
+        +this.minute_alarm_time === m &&
+        +this.second_alarm_time === s &&
+        this.amPm_alarm_time === dn
+      ) {
+        this.playTheSound();
+        this.animatedClock();
+      }
+    }
+  }
+
+  alwaysRunning() {
+    setInterval(() => {
+      this.date = new Date();
+      let getHours = this.date.getHours();
+      if (getHours > 12) getHours = getHours - 12;
+
+      let h = getHours;
+      let m = this.date.getMinutes();
+      let s = this.date.getSeconds();
+      // dn = this.dayOrNight();
+      this.ringAlarm(h, m, s, "PM");
+    }, 1000);
   }
 }
 
-let alaramClock = new Clock(hours, minutes, seconds, dayOrNight);
-alaramClock.showTime();
+let alarmClock = new Clock(hours, minutes, seconds, dayOrNight);
+alarmClock.showTime();
+alarmClock.alwaysRunning();
 
 time.addEventListener("click", () => {
-  if (flag === 1) alaramClock.showTime();
+  if (flag === 1) alarmClock.showTime();
 });
 
-date.addEventListener("click", () => alaramClock.displayDate());
+date.addEventListener("click", () => alarmClock.displayDate());
 
-alarm.addEventListener("click", () => alaramClock.setAlarm());
+alarm.addEventListener("click", () => alarmClock.setAlarm());
