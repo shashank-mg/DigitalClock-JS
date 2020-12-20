@@ -74,7 +74,7 @@ class Clock {
     clearInterval(this.stopTime);
     this.date = new Date();
     this.hour_time.textContent = this.date.getDate();
-    this.minute_time.textContent = months[this.date.getMonth() - 1];
+    this.minute_time.textContent = months[this.date.getMonth()];
     this.minute_time.classList.add("month");
 
     this.second_time.textContent = this.date.getFullYear();
