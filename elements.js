@@ -25,7 +25,7 @@ while (i < 60) {
   num = "";
   i++;
 }
-console.log(a_count);
+
 let months = [
   "January",
   "February",
@@ -55,11 +55,11 @@ let choose_hour =
   `
     <div class="input-group mb-3">
       <div class="input-group-append">
-      <label class="input-group-text" for="inputGroupSelect01">
+      <label class="input-group-text" for="inputGroupSelect01" style="font-family:'Nunito SemiBold';">
       Hours
       </label>
     </div>
-    <select class="custom-select-hour" id="inputGroupSelect01">
+    <select class="custom-select-hour"  id="inputGroupSelect01">
       <option selected value='00'>00</option>
       ` +
   a_count +
@@ -69,7 +69,7 @@ let choose_hour =
 let choose_minute =
   `<div class="input-group mb-3">
       <div class="input-group-append">
-      <label class="input-group-text" for="inputGroupSelect01">
+      <label class="input-group-text" for="inputGroupSelect01" style="font-family:'Nunito SemiBold';">
       Minute
       </label>
     </div>
@@ -83,7 +83,7 @@ let choose_minute =
 let choose_second =
   ` <div class="input-group mb-3">
     <div class="input-group-append">
-    <label class="input-group-text" for="inputGroupSelect01">
+    <label class="input-group-text" for="inputGroupSelect01" style="font-family:'Nunito SemiBold';">
      Second
     </label>
     </div>
@@ -100,7 +100,7 @@ let onOrOff = `
 
 let amOrPm = `<div class="input-group mb-3">
       <div class="input-group-append">
-      <label class="input-group-text" for="inputGroupSelect01">
+      <label class="input-group-text" for="inputGroupSelect01" style="font-family:'Nunito SemiBold';">
       AM/PM
       </label>
     </div>

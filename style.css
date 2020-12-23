@@ -1,7 +1,9 @@
 .container {
-  margin: 0 auto;
+  margin: 0px auto;
   min-width: 995px;
   height: 500px;
+  font-family: Radioland;
+  box-sizing: border-box;
 }
 
 .clock-body {
@@ -35,7 +37,7 @@
 .second {
   flex-grow: 1;
   padding: 2%;
-  font-size: 350%;
+  font-size: 300%;
   color: chartreuse;
   border-radius: 3px;
   background-color: #555;
@@ -43,7 +45,7 @@
 
 .dayOrNight {
   flex-grow: 0.05;
-  padding: 5%;
+  padding: 4%;
   font-size: 100%;
   color: chartreuse;
   background-color: #555;
