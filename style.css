@@ -1,3 +1,8 @@
+body {
+  background: url("wall1.jpg") repeat;
+  background-size: cover;
+  background-size: 100%;
+}
 .container {
   margin: 0px auto;
   min-width: 995px;
@@ -38,7 +43,7 @@
   flex-grow: 1;
   padding: 2%;
   font-size: 300%;
-  color: chartreuse;
+  color: violet;
   border-radius: 3px;
   background-color: #555;
 }
@@ -47,7 +52,7 @@
   flex-grow: 0.05;
   padding: 4%;
   font-size: 100%;
-  color: chartreuse;
+  color: violet;
   background-color: #555;
 }
 
@@ -103,7 +108,7 @@
   flex-grow: 1;
   padding: 2%;
   font-size: 320%;
-  color: chartreuse;
+  color: violet;
   border-radius: 3px;
   background-color: #555;
 }
@@ -112,14 +117,14 @@
   flex-grow: 1;
   padding: 2%;
   font-size: 320%;
-  color: chartreuse;
+  color: violet;
   border-radius: 3px;
   background-color: #555;
   height: 60px;
 }
 
 .alarm-set {
-  border-bottom: 1px solid chartreuse;
+  border-bottom: 1px solid violet;
 }
 
 .hour2,
@@ -129,7 +134,7 @@
   flex-grow: 1;
   padding: 2%;
   font-size: 100%;
-  color: chartreuse;
+  color: violet;
   background-color: #555;
 }
 
@@ -141,7 +146,7 @@
   border-radius: 25px;
   background-color: #555;
   font-weight: bold;
-  color: chartreuse;
+  color: violet;
 }
 
 .btn:hover {
@@ -154,4 +159,8 @@
 
 .expand {
   transform: scale(1);
+}
+
+.buttons {
+  background-color: rgb(185, 95, 185);
 }
