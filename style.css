@@ -1,3 +1,6 @@
+:root {
+  --theme-color: violet;
+}
 body {
   background: url("wall1.jpg") repeat;
   background-size: cover;
@@ -43,7 +46,7 @@ body {
   flex-grow: 1;
   padding: 2%;
   font-size: 300%;
-  color: violet;
+  color: var(--theme-color);
   border-radius: 3px;
   background-color: #555;
 }
@@ -52,7 +55,7 @@ body {
   flex-grow: 0.05;
   padding: 4%;
   font-size: 100%;
-  color: violet;
+  color: var(--theme-color);
   background-color: #555;
 }
 
@@ -108,7 +111,7 @@ body {
   flex-grow: 1;
   padding: 2%;
   font-size: 320%;
-  color: violet;
+  color: var(--theme-color);
   border-radius: 3px;
   background-color: #555;
 }
@@ -117,7 +120,7 @@ body {
   flex-grow: 1;
   padding: 2%;
   font-size: 320%;
-  color: violet;
+  color: var(--theme-color);
   border-radius: 3px;
   background-color: #555;
   height: 60px;
@@ -134,7 +137,7 @@ body {
   flex-grow: 1;
   padding: 2%;
   font-size: 100%;
-  color: violet;
+  color: var(--theme-color);
   background-color: #555;
 }
 
@@ -146,7 +149,7 @@ body {
   border-radius: 25px;
   background-color: #555;
   font-weight: bold;
-  color: violet;
+  color: var(--theme-color);
 }
 
 .btn:hover {
