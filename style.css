@@ -5,7 +5,14 @@ body {
   background: url("wall1.jpg") repeat;
   background-size: cover;
   background-size: 100%;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
 }
+
 .container {
   margin: 0px auto;
   min-width: 995px;
@@ -34,15 +41,17 @@ body {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  flex-basis: 200px;
+  /* flex-basis: 200px; */
   background-color: #555;
   height: 100%;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .hour,
 .minute,
 .second {
+  width: 33.33%;
   flex-grow: 1;
   padding: 2%;
   font-size: 300%;
@@ -109,11 +118,13 @@ body {
 
 .month {
   flex-grow: 1;
-  padding: 2%;
-  font-size: 320%;
+  width: 33.33%;
+  padding: 0px;
+  font-size: 190%;
   color: var(--theme-color);
   border-radius: 3px;
   background-color: #555;
+  box-sizing: border-box;
 }
 
 .year {
